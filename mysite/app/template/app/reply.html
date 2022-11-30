@@ -1,0 +1,24 @@
+{% extends "app/Header.html"%}
+
+{% block content_block %}
+<h2>返信用</h2>
+<br>
+<h4>{{ top.title }}</h4>
+<table class="table">
+    <thead>
+    <tr>
+        <th>名前</th>
+        <th>img</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for replydetail in top.replydetail_set.all %}
+        <tr>
+            <td>{{ replydetail.reply }}</td>
+            <td><img src="{{ MEDIA_URL }}{{ replydetail.image }}" style="width: 200px;"></td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "app/Header.html"%}
+
+{% block content_block %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'app/style.css' %}">
+
+<h2>一覧ページ</h2>
+<br>
+<h4 style="text-align: center">{{ top.title }}</h4>
+<table class="table">
+    <thead>
+    <tr>
+        <th>郵送物一覧</th>
+        <th>詳細</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for listof in top.listof_set.all %}
+        <tr>
+            <td>{{ listof.element }}</td>
+            <td><a href="/app/{{ top.id }}/{{ listof.id }}/">こちら</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

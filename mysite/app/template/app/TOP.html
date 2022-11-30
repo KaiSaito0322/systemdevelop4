@@ -1,0 +1,35 @@
+{% extends "app/Header.html"%}
+
+{% block content_block %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'app/style.css' %}">
+
+<h2>TOPページ</h2>
+<br>
+<h4></h4>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">項目</th>
+        <th scope="col">返送用郵送物</th>
+        <th scope="col">一覧</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for top in latest_top_list  %}
+    <tr>
+        <td>{{ top.title }}</td>
+        <td><a href="{% url 'app:replyview' top.id %}">こちら</a></td>
+        <td><a href="{% url 'app:listview' top.id %}">こちら</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+ <form action="" method="get">
+        <input name="query" value="{{ request.GET.query }}" type="text">
+        <button type="submit">検索する</button>
+ </form>
+{% endblock %}
